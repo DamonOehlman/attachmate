@@ -2,7 +2,7 @@
 
 An experiment in using @isaacs useful [fstream](https://github.com/isaacs/fstream) project to stream files in and out of [CouchDB](http://couchdb.apache.org/) as attachments to documents.
 
-## Reading
+## Downloading From Couch to FileSystem
 
 ### Example: Download Attachments to the Filesystem
 
@@ -18,7 +18,22 @@ var attachmate = require('attachmate'),
 r.pipe(w);
 ```
 
-## Writing
+### Example: Download Attachments (using download helper)
+
+```js
+var attachmate = require('attachmate'),
+    path = require('path');
+    
+attachmate.download(
+    'http://localhost:5984/testdb/doc_with_attachments', 
+    path.resolve(__dirname, 'output'), 
+    function(err) {
+        console.log('done, error = ', err);
+    }
+);
+```
+
+## Uploading from Filesystem to Couch
 
 ### Options
 
@@ -40,4 +55,19 @@ var attachmate = require('attachment'),
     
 // upload the contents of the input directory as attachments
 r.pipe(w);
+```
+
+### Example: Upload Attachments (using upload helper)
+
+```js
+var attachmate = require('attachmate'),
+    path = require('path');
+    
+attachmate.upload(
+    'http://localhost:5984/testdb/test', 
+    path.resolve(__dirname, 'input'), 
+    function(err) {
+        console.log('done, error = ', err);
+    }
+);
 ```
