@@ -5,19 +5,18 @@
     "couchdb"
   ],
   "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "engines": {
     "node": ">= 0.4.x < 0.9.0"
   },
   "dependencies": {
-      "inherits": ">= 1.0.0",
-      "request": "2.9.x",
-      "fstream": "0.1.x",
-      "mime": "1.2.x",
-      "debug": "*"
+    "inherits": ">= 1.0.0",
+    "request": "2.9.x",
+    "fstream": "0.1.x",
+    "mime": "1.2.x",
+    "debug": "*"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/DamonOehlman/attachmate.git"
