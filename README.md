@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/DamonOehlman/attachmate.png)](http://travis-ci.org/DamonOehlman/attachmate)
 # attachmate - Streamable CouchDB attachments :)
 
 An experiment in using @isaacs useful [fstream](https://github.com/isaacs/fstream) project to stream files in and out of [CouchDB](http://couchdb.apache.org/) as attachments to documents.
