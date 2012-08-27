@@ -27,7 +27,7 @@ module.exports = function(targetPath, couchurl, name, callback) {
 		});
 	}
 
-	return function(callback) {
+	return function() {
 		fs.readdir(targetPath, function(err, files) {
 			async.forEach(files || [], compareItem, callback);
 		});

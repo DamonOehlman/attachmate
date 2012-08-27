@@ -1,0 +1,5 @@
+Description	
+English: This artist's concept depicts the rover Curiosity, of NASA's Mars Science Laboratory mission, as it uses its Chemistry and Camera (ChemCam) instrument to investigate the composition of a rock surface. ChemCam fires laser pulses at a target and views the resulting spark with a telescope and spectrometers to identify chemical elements. The laser is actually in an invisible infrared wavelength, but is shown here as visible red light for purposes of illustration.
+Date	9 November 2011
+Source	http://marsprogram.jpl.nasa.gov/msl/multimedia/images/?ImageID=3710
+Author	NASA/JPL-Caltech

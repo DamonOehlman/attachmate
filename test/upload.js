@@ -27,6 +27,8 @@ describe('upload tests', function() {
 
 	describe('long format', function(done) {
 		it('should be able upload a directory containing a single file', uploadAndCheck('single'));
+		it('should be able to upload a directory with multiple files', uploadAndCheck('multiple'));
+		it('should be able to upload a directory with binary files', uploadAndCheck('binary'));
 	});
 
 	describe('short format', function() {
