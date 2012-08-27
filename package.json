@@ -10,13 +10,15 @@
     "node": ">= 0.4.x < 0.9.0"
   },
   "dependencies": {
-    "inherits": ">= 1.0.0",
-    "request": "2.9.x",
+    "request": "2.10.x",
     "fstream": "0.1.x",
     "mime": "1.2.x",
     "debug": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "async": "0.1.x",
+    "mocha": "1.3.x"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/DamonOehlman/attachmate.git"
