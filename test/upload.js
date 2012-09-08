@@ -29,7 +29,8 @@ describe('upload tests', function() {
 		it('should be able upload a directory containing a single file', uploadAndCheck('single'));
 		it('should be able to upload a directory with multiple files', uploadAndCheck('multiple'));
 		it('should be able to upload a directory with binary files', uploadAndCheck('binary'));
-		it('should be able to traverse a directory and upload all files', uploadAndCheck('traverse'));
+		
+		// it('should be able to traverse a directory and upload all files', uploadAndCheck('traverse'));
 	});
 
 	describe('short format', function() {

@@ -2,7 +2,8 @@ var	assert = require('assert'),
 	async = require('async'),
 	fs = require('fs'),
 	path = require('path'),
-	request = require('request');
+	request = require('request'),
+	reInvalidFile = /^\.DS\_Store/i;
 
 module.exports = function(targetPath, couchurl, name, callback) {
 
@@ -29,7 +30,12 @@ module.exports = function(targetPath, couchurl, name, callback) {
 
 	return function() {
 		fs.readdir(targetPath, function(err, files) {
-			async.forEach(files || [], compareItem, callback);
+			// remove dodgy files
+			files = (files || []).filter(function(name) {
+				return !reInvalidFile.test(name);
+			});
+
+			async.forEach(files, compareItem, callback);
 		});
 	};
 };

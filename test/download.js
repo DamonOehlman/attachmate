@@ -5,6 +5,8 @@ var assert = require('assert'),
     
 describe('download tests', function() {
 
+	/*
+	TO BE COMPLETED
 	describe('long format', function() {
 		r = fstream.Reader({ type: attachmate.Reader, path: 'http://localhost:5984/steelmesh/app::tripplanner' }),
 		w = fstream.Writer({ path: path.resolve(__dirname, 'output'), type: 'Directory'});
@@ -16,5 +18,5 @@ describe('download tests', function() {
 	describe('short format', function() {
 
 	});
-
+	*/
 });
