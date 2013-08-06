@@ -1,55 +1,162 @@
-var fstream = require('fstream'),
-    Reader = exports.Reader = require('./lib/reader'),
-    Writer = exports.Writer = require('./lib/writer');
+/* jshint node: true */
+'use strict';
+
+/**
+  # attachmate
+
+  Streamable CouchDB attachments
+
+  [
+  ![Build Status]
+  (https://travis-ci.org/DamonOehlman/attachmate.png)
+  ](https://travis-ci.org/DamonOehlman/attachmate)
+
+  An experiment in using @isaacs useful
+  [fstream](https://github.com/isaacs/fstream) project to stream files in 
+  and out of [CouchDB](http://couchdb.apache.org/) as attachments to 
+  documents.
+
+  ## Downloading From Couch to FileSystem
+
+  ### Example: Download Attachments to the Filesystem
+
+  ```js
+  var attachmate = require('attachmate');
+  var fstream = require('fstream');
+  var path = require('path');
+
+  var r = new attachmate.Reader({
+    path: 'http://localhost:5984/testdb/doc_with_attachments'
+  });
+
+  var w = fstream.Writer({
+    path: path.resolve(__dirname, 'output'),
+    type: 'Directory'
+  });
+      
+  // pipe the attachments to the directory
+  r.pipe(w);
+  ```
+
+  ### Example: Download Attachments (using download helper)
+
+  ```js
+  var attachmate = require('attachmate');
+  var path = require('path');
+      
+  attachmate.download(
+    'http://localhost:5984/testdb/doc_with_attachments', 
+    path.resolve(__dirname, 'output'), 
+    function(err) {
+        console.log('done, error = ', err);
+    }
+  );
+  ```
+
+  ## Uploading from Filesystem to Couch
+
+  ### Options
+
+  The fstream classes take a set of options at initialization.  In keeping
+  with the fstream standard, we use the `path` option to denote the target
+  document.  The following additional options are also supported:
+
+  - `preserveExisting` - whether or not existing attachments on the
+    document should be preserved. (default = true)
+
+  - `includeHidden` - whether or not hidden files should be included when
+     uploading attachments to couch. (default = false)
+
+  ### Example: Upload Attachments from the Filesystem
+
+  ```js
+  var attachmate = require('attachment');
+  var fstream = require('fstream');
+  var path = require('path');
+
+  var r = fstream.Reader({
+    path: 'input',
+    type: 'Directory'
+  });
+
+  var w = new attachmate.Writer({
+    path: 'http://localhost:5984/testdb/test'
+  });
+      
+  // upload the contents of the input directory as attachments
+  r.pipe(w);
+  ```
+
+  ### Example: Upload Attachments (using upload helper)
+
+  ```js
+  var attachmate = require('attachmate');
+  var path = require('path');
+      
+  attachmate.upload(
+    'http://localhost:5984/testdb/test', 
+    path.resolve(__dirname, 'input'), 
+    function(err) {
+      console.log('done, error = ', err);
+    }
+  );
+  ```
+**/
+
+var fstream = require('fstream');
+var Reader = exports.Reader = require('./lib/reader');
+var Writer = exports.Writer = require('./lib/writer');
     
 exports.download = function(srcDoc, targetPath, opts, callback) {
-    var src, dst;
-    
-    // if the options is the callback, then remap
-    if (typeof opts == 'function') {
-        callback = opts;
-        opts = {};
-    }
-    
-    // ensure we have a callback
-    callback = callback || function() {};
+  var src;
+  var dst;
+  
+  // if the options is the callback, then remap
+  if (typeof opts == 'function') {
+    callback = opts;
+    opts = {};
+  }
+  
+  // ensure we have a callback
+  callback = callback || function() {};
 
-    // create the source and dest readers / writers
-    src = new Reader({ path: srcDoc });
-    dst = fstream.Writer({ path: targetPath, type: 'Directory'});
-    
-    // wire callbacks
-    dst.on('end', callback);
-    dst.on('error', callback);
-    
-    // pipe from the couch doc to the target dir
-    src.pipe(dst);
+  // create the source and dest readers / writers
+  src = new Reader({ path: srcDoc });
+  dst = fstream.Writer({ path: targetPath, type: 'Directory'});
+  
+  // wire callbacks
+  dst.on('end', callback);
+  dst.on('error', callback);
+  
+  // pipe from the couch doc to the target dir
+  src.pipe(dst);
 };
     
 exports.upload = function(targetDoc, sourcePath, opts, callback) {
-    var src, dst;
-    
-    // if the options is the callback, then remap
-    if (typeof opts == 'function') {
-        callback = opts;
-        opts = {};
-    }
-    
-    // ensure we have a callback
-    callback = callback || function() {};
-    
-    // add the target doc to the opts
-    opts.path = targetDoc;
-    
-    // create the source and destination readers and writers
-    src = fstream.Reader({ path: sourcePath, type: 'Directory' });
-    dst = new Writer(opts);
-        
-    // wire callbacks
-    dst.on('end', callback);
-    dst.on('error', callback);
+  var src;
+  var dst;
 
-    // pipe the attachments to the directory
-    src.pipe(dst);
+  // if the options is the callback, then remap
+  if (typeof opts == 'function') {
+    callback = opts;
+    opts = {};
+  }
+  
+  // ensure we have a callback
+  callback = callback || function() {};
+  
+  // add the target doc to the opts
+  opts.path = targetDoc;
+  
+  // create the source and destination readers and writers
+  src = fstream.Reader({ path: sourcePath, type: 'Directory' });
+  dst = new Writer(opts);
+      
+  // wire callbacks
+  dst.on('end', callback);
+  dst.on('error', callback);
+
+  // pipe the attachments to the directory
+  src.pipe(dst);
 };
 

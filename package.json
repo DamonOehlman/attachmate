@@ -21,6 +21,7 @@
     "url": "http://github.com/DamonOehlman/attachmate/issues"
   },
   "scripts": {
+    "lint": "jshint index.js lib/*.js",
     "test": "$(npm bin)/mocha --reporter spec -t 0"
   },
   "main": "index.js",
