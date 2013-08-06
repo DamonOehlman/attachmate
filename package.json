@@ -1,23 +1,17 @@
 {
   "name": "attachmate",
   "description": "CouchDB Attachment Helpers (part of the Steelmesh stack)",
-  "tags": [
-    "couchdb"
-  ],
   "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
   "version": "0.1.5",
-  "engines": {
-    "node": ">= 0.4.x < 0.9.0"
-  },
   "dependencies": {
-    "request": "2.11.x",
+    "request": "2.25.x",
     "fstream": "0.1.x",
     "mime": "1.2.x",
     "debug": "*"
   },
   "devDependencies": {
-    "async": "0.1.x",
-    "mocha": "1.4.x"
+    "async": "0.2.x",
+    "mocha": "1.12.x"
   },
   "repository": {
     "type": "git",
@@ -27,7 +21,18 @@
     "url": "http://github.com/DamonOehlman/attachmate/issues"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec -t 0"
+    "test": "$(npm bin)/mocha --reporter spec -t 0"
   },
-  "contributors": []
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "keywords": [
+    "couchdb",
+    "attachment",
+    "download",
+    "upload"
+  ],
+  "license": "MIT"
 }
