@@ -1,7 +1,7 @@
 {
   "name": "attachmate",
-  "description": "CouchDB Attachment Helpers (part of the Steelmesh stack)",
-  "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
+  "description": "CouchDB Attachment Helpers",
+  "author": "Damon Oehlman <damon.oehlman@gmail.com>",
   "version": "0.1.5",
   "dependencies": {
     "request": "2.25.x",
@@ -21,7 +21,7 @@
     "url": "http://github.com/DamonOehlman/attachmate/issues"
   },
   "scripts": {
-    "lint": "jshint index.js lib/*.js",
+    "gendocs": "gendocs > README.md",
     "test": "$(npm bin)/mocha --reporter spec -t 0"
   },
   "main": "index.js",
