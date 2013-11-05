@@ -1,3 +1,9 @@
+services:
+  - couchdb
+
+before_script:
+  - curl -X PUT localhost:5984/testdb
+
 language: node_js
 node_js:
   - 0.8
