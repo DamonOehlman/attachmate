@@ -10,7 +10,7 @@ documents.
 
 [![NPM](https://nodei.co/npm/attachmate.png)](https://nodei.co/npm/attachmate/)
 
-[![Build Status](https://travis-ci.org/DamonOehlman/attachmate.png?branch=master)](https://travis-ci.org/DamonOehlman/attachmate)
+[![stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/badges/stability-badges) [![Build Status](https://img.shields.io/travis/DamonOehlman/attachmate.svg?branch=master)](https://travis-ci.org/DamonOehlman/attachmate) 
 
 ## Downloading From Couch to FileSystem
 
@@ -153,7 +153,7 @@ attachmate.upload(
 
 ### MIT
 
-Copyright (c) 2013 Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2014 Damon Oehlman <damon.oehlman@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
