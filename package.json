@@ -23,7 +23,7 @@
   },
   "scripts": {
     "gendocs": "gendocs > README.md",
-    "test": "$(npm bin)/mocha --reporter spec -t 0"
+    "test": "mocha --reporter spec -t 0"
   },
   "main": "index.js",
   "directories": {
