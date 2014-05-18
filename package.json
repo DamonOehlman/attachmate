@@ -4,15 +4,15 @@
   "author": "Damon Oehlman <damon.oehlman@gmail.com>",
   "version": "0.1.6",
   "dependencies": {
-    "request": "~2.27.0",
-    "fstream": "~0.1.24",
-    "mime": "~1.2.11",
+    "request": "^2",
+    "fstream": "~0.1",
+    "mime": "^1",
     "debug": "*"
   },
   "devDependencies": {
-    "async": "0.2.x",
-    "mocha": "~1.14.0",
-    "mkdirp": "~0.3.5"
+    "async": "~0.9",
+    "mocha": "^1",
+    "mkdirp": "~0.5"
   },
   "repository": {
     "type": "git",
