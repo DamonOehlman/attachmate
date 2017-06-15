@@ -1,6 +1,3 @@
-/* jshint node: true */
-'use strict';
-
 /**
   # attachmate
 
@@ -56,7 +53,7 @@ exports.download = function(srcDoc, targetPath, opts, callback) {
   var dst;
 
   // if the options is the callback, then remap
-  if (typeof opts == 'function') {
+  if (typeof opts === 'function') {
     callback = opts;
     opts = {};
   }
@@ -66,7 +63,7 @@ exports.download = function(srcDoc, targetPath, opts, callback) {
 
   // create the source and dest readers / writers
   src = new Reader({ path: srcDoc });
-  dst = fstream.Writer({ path: targetPath, type: 'Directory'});
+  dst = fstream.Writer({ path: targetPath, type: 'Directory' });
 
   // wire callbacks
   dst.on('end', callback);
@@ -81,7 +78,7 @@ exports.upload = function(targetDoc, sourcePath, opts, callback) {
   var dst;
 
   // if the options is the callback, then remap
-  if (typeof opts == 'function') {
+  if (typeof opts === 'function') {
     callback = opts;
     opts = {};
   }
