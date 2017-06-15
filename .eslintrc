@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "djo-base/es5/"
+  ],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "no-param-reassign": [0],
+    "no-underscore-dangle": [0] // required for fstream override
+  }
+}
